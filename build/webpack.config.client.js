@@ -1,37 +1,24 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const baseConfig = require('./webpack.base')
 const isDev = process.env.NODE_ENV === 'development'
 
-const config = {
+const config = webpackMerge(baseConfig, {
     mode: 'development',
     entry: {
         app: path.join(__dirname, '../client/app.js')
     },
     output: {
-        filename: '[name].[hash].js',
-        path: path.join(__dirname, '../dist'),
-        publicPath: '/public/'        
-    },
-    module: {
-        rules: [
-            {
-                test: /.jsx$/,
-                loader: 'babel-loader'
-            },
-            {
-                test: /.js$/,
-                loader: 'babel-loader',
-                exclude: /(node_modules)/
-            }
-        ]
+        filename: '[name].[hash].js'
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '../client/template.html')
         })
     ]
-}
+})
 
 if (isDev) {
     config.entry = {

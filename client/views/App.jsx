@@ -4,13 +4,15 @@ import Routes from '../config/router'
 
 export default class App extends React.Component{
     render() {
-        return[
+        return(
             <div>
-                <Link to="/">首页</Link>
-                <br />
-                <Link to="/detail">详情页</Link>
-            </div>,
-            <Routes />
-        ]   
+                <div>
+                    <Link to="/">首页</Link>
+                    <br />
+                    <Link to="/detail">详情页</Link>
+                </div>
+                <Routes />   
+            </div>
+        )
     }
 }

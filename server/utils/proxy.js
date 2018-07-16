@@ -26,7 +26,7 @@ module.exports = function (req, res, next) {
             accesstoken: user.accessToken
         }),
         headers: {
-            'Content-Type': 'application/x-www-form-urlencode'
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
     }).then(resp => {
         if (resp.status === 200) {
